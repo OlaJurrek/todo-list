@@ -8,6 +8,48 @@
     <title>Classic To DO List</title>
   </head>
   <body>
-    <h1>Hello World! Welcome in SASS!</h1>
+    <header>
+      <div class="current-time"></div>
+      <div class="menu"></div>
+      <div class="to-do">
+        <h2 class="todo-counter"></h2>
+        <h2>Still</h2>
+        <h2>To Do</h2>
+      </div>
+      <div class="done">
+        <h2 class="done-counter"></h2>
+        <h2>Done</h2>
+        <h2>Already</h2>
+      </div>
+    </header>
+    <div class="add-new-btn">
+      <h3>New</h3>
+      <h3>Task</h3>
+    </div>
+    <div class="add-new-page">
+      <h1>Add New Task</h1>
+      <div class="input-field">
+        <form action="">
+          <input type="text" name="new-task" id="new-task" />
+          <label for="new-task">What do you really need to do?</label>
+        </form>
+        <blockquote cite="https://www.huxley.net/bnw/four.html">
+          <p>I have to think how to do this part later!</p>
+        </blockquote>
+
+        <cite>– Aldous Huxley, Brave New World</cite>
+      </div>
+    </div>
+    <main>
+      <h1>My Tasks</h1>
+      <div class="filter-field">
+        <input type="text" name="filter" id="filter" />
+        <label for="filter">Filter Tasks</label>
+      </div>
+      <ul class="tasks-list"></ul>
+      <a href="#" class="btn blue">show completed</a>
+      <a href="#" class="btn green">mark all complete</a>
+      <a href="#" class="btn black">delete all</a>
+    </main>
   </body>
 </html>
