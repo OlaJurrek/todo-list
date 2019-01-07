@@ -1,0 +1,14 @@
+{
+  "name": "my_task_list",
+  "version": "1.0.0",
+  "description": "Mobile first task list application",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive"
+  },
+  "author": "Aleksandra Jurek",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.11.0"
+  }
+}
