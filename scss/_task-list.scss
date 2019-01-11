@@ -1,0 +1,21 @@
+main {
+  padding: 1rem;
+
+  .btn {
+    display: block;
+    width: 180px;
+    padding: 0.5rem 1rem;
+    margin: 10px auto;
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(63, 90, 148, 0.7);
+  }
+
+  .dark {
+    background-color: #2b5876;
+  }
+}

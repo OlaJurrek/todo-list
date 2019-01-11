@@ -1,4 +1,6 @@
 @import "_header.scss";
+@import "_add-new-page.scss";
+@import "_task-list.scss";
 
 $primary-color: #444;
 
@@ -11,6 +13,7 @@ $primary-color: #444;
 
 h1 {
   @extend %heading;
+  font-weight: 400;
 }
 
 h2 {
@@ -25,10 +28,16 @@ h3 {
   @extend %heading;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: $primary-color;
-  color: #fff;
+  background-color: #fff;
+  color: $primary-color;
   font-family: "Lato", sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-family: "Oxygen", sans-serif;
 }

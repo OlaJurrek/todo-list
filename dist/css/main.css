@@ -1,22 +1,13 @@
 header {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  min-height: 9.5rem;
   background: url(../img/bg-sea.jpeg) no-repeat;
   background-position: top 10%;
   background-size: cover; }
   header > * {
-    padding: 2.5rem 1rem 1rem; }
-
-.current-time {
-  position: absolute;
-  top: 5px;
-  left: 1rem;
-  font-size: 0.8rem;
-  font-family: "Dosis", sans-serif;
-  color: rgba(255, 255, 255, 0.7); }
-
-.menu {
-  position: absolute; }
+    padding: 2.5rem 1rem 1rem;
+    color: #fff; }
 
 .to-do {
   grid-column: 1 / 2;
@@ -32,11 +23,75 @@ header {
   .done * {
     text-align: end; }
 
+.current-time {
+  position: absolute;
+  top: 5px;
+  left: 1rem;
+  font-size: 0.8rem;
+  font-family: "Dosis", sans-serif;
+  color: rgba(255, 255, 255, 0.7); }
+
+.menu {
+  position: absolute;
+  top: 7px;
+  right: 1rem; }
+  .menu p {
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.7); }
+  .menu p:first-child,
+  .menu p:last-child {
+    width: 17px;
+    height: 2.5px; }
+  .menu p:nth-child(2) {
+    width: 10px;
+    height: 2px;
+    margin: 3px 0 3px 5px; }
+
+.add-new-btn {
+  position: absolute;
+  right: 0.5rem;
+  top: 7.5rem;
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ef8e38;
+  border-radius: 50%; }
+  .add-new-btn h3 {
+    text-align: center;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
+
+.add-new-page {
+  display: none; }
+
+main {
+  padding: 1rem; }
+  main .btn {
+    display: block;
+    width: 180px;
+    padding: 0.5rem 1rem;
+    margin: 10px auto;
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    color: white;
+    background-color: rgba(63, 90, 148, 0.7); }
+  main .dark {
+    background-color: #2b5876; }
+
 h1, h2, h3 {
   margin: 0;
   padding: 0;
   font-family: "Thasadith", sans-serif;
   font-family: "Dosis", sans-serif; }
+
+h1 {
+  font-weight: 400; }
 
 h2 {
   font-size: 1.2rem;
@@ -44,9 +99,14 @@ h2 {
   line-height: 1.2;
   letter-spacing: 2px; }
 
+a {
+  text-decoration: none; }
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #444;
-  color: #fff;
-  font-family: "Lato", sans-serif; }
+  background-color: #fff;
+  color: #444;
+  font-family: "Lato", sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-family: "Oxygen", sans-serif; }

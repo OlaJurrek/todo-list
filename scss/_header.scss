@@ -1,26 +1,14 @@
 header {
   display: grid;
   grid-template-columns: 1fr 1fr;
-
+  min-height: 9.5rem;
   background: url(../img/bg-sea.jpeg) no-repeat;
   background-position: top 10%;
   background-size: cover;
   > * {
     padding: 2.5rem 1rem 1rem;
+    color: #fff;
   }
-}
-
-.current-time {
-  position: absolute;
-  top: 5px;
-  left: 1rem;
-  font-size: 0.8rem;
-  font-family: "Dosis", sans-serif;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.menu {
-  position: absolute;
 }
 
 .to-do {
@@ -41,5 +29,35 @@ header {
 
   * {
     text-align: end;
+  }
+}
+
+.current-time {
+  position: absolute;
+  top: 5px;
+  left: 1rem;
+  font-size: 0.8rem;
+  font-family: "Dosis", sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.menu {
+  position: absolute;
+  top: 7px;
+  right: 1rem;
+
+  p {
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  p:first-child,
+  p:last-child {
+    width: 17px;
+    height: 2.5px;
+  }
+  p:nth-child(2) {
+    width: 10px;
+    height: 2px;
+    margin: 3px 0 3px 5px;
   }
 }
