@@ -1,0 +1,45 @@
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  background: url(../img/bg-sea.jpeg) no-repeat;
+  background-position: top 10%;
+  background-size: cover;
+  > * {
+    padding: 2.5rem 1rem 1rem;
+  }
+}
+
+.current-time {
+  position: absolute;
+  top: 5px;
+  left: 1rem;
+  font-size: 0.8rem;
+  font-family: "Dosis", sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.menu {
+  position: absolute;
+}
+
+.to-do {
+  grid-column: 1 / 2;
+  //   color: rgba(255, 255, 255, 0.9);
+  //   min-height: 100%;
+  border-bottom: 3px solid #4286f4;
+  background-color: #9ad3e052;
+  background-color: #5b87e55d;
+}
+
+.done {
+  grid-column: 2 / 3;
+  background-color: rgba(55, 59, 68, 0.534);
+  background-color: rgba(63, 90, 148, 0.7);
+  background: linear-gradient(to right, #5b87e55d, rgba(63, 90, 148, 0.7) 90%);
+  //   height: 100%;
+
+  * {
+    text-align: end;
+  }
+}
