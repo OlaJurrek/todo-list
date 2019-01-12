@@ -3,6 +3,7 @@
 @import "_task-list.scss";
 
 $primary-color: #444;
+$secondary-color: #95b0d6;
 
 %heading {
   margin: 0;
@@ -13,7 +14,9 @@ $primary-color: #444;
 
 h1 {
   @extend %heading;
+  font-size: 1.7rem;
   font-weight: 400;
+  letter-spacing: 2px;
 }
 
 h2 {
@@ -30,6 +33,45 @@ h3 {
 
 a {
   text-decoration: none;
+}
+
+// Forms
+
+input {
+  width: 90%;
+  padding: 10px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: $primary-color;
+  border: none;
+  border-bottom: 1.5px solid $secondary-color;
+  border-radius: 2px;
+  transition: all 0.5s;
+  &:focus {
+    outline: none;
+    background-color: white;
+    border-bottom: 2px solid $secondary-color;
+  }
+}
+
+// input:focus + label {
+//   top: -15px;
+//   font-size: 0.8rem;
+//   color: #4286f4;
+// }
+
+.label-up {
+  top: -15px;
+  font-size: 0.8rem;
+  color: #4286f4;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: lighten($primary-color, 40);
+  transition: all 0.4s ease-in-out;
 }
 
 body {

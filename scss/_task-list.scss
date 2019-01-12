@@ -1,7 +1,13 @@
 main {
   padding: 1rem;
 
-  .btn {
+  .filter-field {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  %btn {
     display: block;
     width: 180px;
     padding: 0.5rem 1rem;
@@ -12,10 +18,38 @@ main {
     text-align: center;
     letter-spacing: 2px;
     color: rgb(255, 255, 255);
-    background-color: rgba(63, 90, 148, 0.7);
+    // background-color: rgba(63, 90, 148, 0.7);
+    border-radius: 2px;
+    box-shadow: 0 8px 4px -6px #777;
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      letter-spacing: 3px;
+    }
+  }
+
+  .blue {
+    @extend %btn;
+    background-color: #6183b8;
+    &:hover {
+      background-color: darken(#6183b8, 10%);
+    }
+  }
+
+  .grey {
+    @extend %btn;
+    background-color: #95b0d6;
+    background-color: #4286f4;
+    &:hover {
+      background-color: darken(#95b0d6, 10%);
+      background-color: darken(#4286f4, 10%);
+    }
   }
 
   .dark {
+    @extend %btn;
     background-color: #2b5876;
+    &:hover {
+      background-color: darken(#2b5876, 10%);
+    }
   }
 }

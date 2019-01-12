@@ -57,7 +57,11 @@ header {
   flex-direction: column;
   justify-content: center;
   background-color: #ef8e38;
-  border-radius: 50%; }
+  border-radius: 50%;
+  border: 1.5px solid #95b0d6;
+  transition: all 0.4s ease-in-out; }
+  .add-new-btn:hover {
+    box-shadow: 0 0 4px 1px #fff; }
   .add-new-btn h3 {
     text-align: center;
     font-size: 0.9rem;
@@ -69,7 +73,11 @@ header {
 
 main {
   padding: 1rem; }
-  main .btn {
+  main .filter-field {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem; }
+  main .blue, main .grey, main .dark {
     display: block;
     width: 180px;
     padding: 0.5rem 1rem;
@@ -80,9 +88,25 @@ main {
     text-align: center;
     letter-spacing: 2px;
     color: white;
-    background-color: rgba(63, 90, 148, 0.7); }
+    border-radius: 2px;
+    box-shadow: 0 8px 4px -6px #777;
+    transition: all 0.4s ease-in-out; }
+    main .blue:hover, main .grey:hover, main .dark:hover {
+      letter-spacing: 3px; }
+  main .blue {
+    background-color: #6183b8; }
+    main .blue:hover {
+      background-color: #47699f; }
+  main .grey {
+    background-color: #95b0d6;
+    background-color: #4286f4; }
+    main .grey:hover {
+      background-color: #7095c8;
+      background-color: #1267f1; }
   main .dark {
     background-color: #2b5876; }
+    main .dark:hover {
+      background-color: #1d3c51; }
 
 h1, h2, h3 {
   margin: 0;
@@ -91,7 +115,9 @@ h1, h2, h3 {
   font-family: "Dosis", sans-serif; }
 
 h1 {
-  font-weight: 400; }
+  font-size: 1.7rem;
+  font-weight: 400;
+  letter-spacing: 2px; }
 
 h2 {
   font-size: 1.2rem;
@@ -101,6 +127,33 @@ h2 {
 
 a {
   text-decoration: none; }
+
+input {
+  width: 90%;
+  padding: 10px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #444;
+  border: none;
+  border-bottom: 1.5px solid #95b0d6;
+  border-radius: 2px;
+  transition: all 0.5s; }
+  input:focus {
+    outline: none;
+    background-color: white;
+    border-bottom: 2px solid #95b0d6; }
+
+.label-up {
+  top: -15px;
+  font-size: 0.8rem;
+  color: #4286f4; }
+
+label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #aaaaaa;
+  transition: all 0.4s ease-in-out; }
 
 body {
   margin: 0;
