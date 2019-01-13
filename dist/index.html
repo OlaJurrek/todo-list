@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
     <link
       href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600|Lato:400,700|Oxygen"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
     <title>Classic To DO List</title>
   </head>
   <body>
@@ -35,24 +43,37 @@
       <h3>Task</h3>
     </div>
     <div class="add-new-page">
-      <h1>Add New Task</h1>
       <div class="input-field">
-        <form action="">
-          <input type="text" name="new-task" id="new-task" />
-          <label for="new-task">What do you really need to do?</label>
+        <form>
+          <input
+            type="text"
+            name="new-task"
+            id="new-task"
+            class="animated-form"
+          />
+          <label for="new-task">What do you REALLY need to do?</label>
+          <button type="submit" class="add-new-btn">
+            <h3>ADD</h3>
+            <h3>TASK</h3>
+          </button>
+          <!-- <input type="submit" value="ADD TASK" class="add-new-btn" /> -->
         </form>
-        <blockquote cite="https://www.huxley.net/bnw/four.html">
-          <p>I have to think how to do this part later!</p>
+      </div>
+      <div class="quotation">
+        <blockquote>
+          You don’t get results by focusing on results. You get results by
+          focusing on the actions that produce results..
         </blockquote>
-
-        <cite>– Aldous Huxley, Brave New World</cite>
+        <cite>Mike Hawkins</cite>
       </div>
     </div>
     <main>
       <h1>My Tasks</h1>
       <div class="filter-field">
-        <input type="text" name="filter" id="filter" />
-        <label for="filter">Filter Tasks</label>
+        <form>
+          <input type="text" name="filter" id="filter" class="animated-form" />
+          <label for="filter">Filter Tasks</label>
+        </form>
       </div>
       <ul class="tasks-list"></ul>
       <a href="#" class="blue">show completed</a>
