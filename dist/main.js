@@ -1,6 +1,15 @@
-// Show current time
+//Define UI variables
 const currentTimeBox = document.querySelector(".current-time");
+const addNewBtn = document.querySelector(".add-new-btn");
+const addNewPage = document.querySelector(".add-new-page");
+const taskList = document.querySelector(".task-list");
+const taskInput = document.querySelector("#new-task");
+const addTaskBtn = document.querySelector('input[type="submit"]');
+const addNewForm = document.querySelector(".input-field form");
+const filterInput = document.querySelector("#filter");
+const deleteBtn = document.querySelector(".delete-btn");
 
+// Show current time
 const today = new Date();
 currentTimeBox.innerHTML = "Today is " + today.toLocaleDateString("pl-PL");
 
@@ -14,10 +23,9 @@ function labelUp(e) {
 }
 
 // Block label to come back into position if there is a value in the input
+document.body.addEventListener("focusout", stayUp);
 
-document.body.addEventListener("focusout", stayUpAll);
-
-function stayUpAll(e) {
+function stayUp(e) {
   if (e.target.className == "animated-form" && e.target.value !== "") {
     e.target.nextElementSibling.style.transition = "none";
     e.target.nextElementSibling.classList.add("label-up");
@@ -29,21 +37,8 @@ function stayUpAll(e) {
     e.target.nextElementSibling.classList.remove("label-up");
   }
 }
-const filterInput = document.querySelector(".filter-field input");
-// filterInput.addEventListener("blur", stayUp);
-
-function stayUp() {
-  if (this.value !== "") {
-  } else {
-    this.nextElementSibling.style.transition = "all .4s ease-in-out";
-    this.nextElementSibling.classList.remove("label-up");
-  }
-}
 
 // Show add new task page
-const addNewBtn = document.querySelector(".add-new-btn");
-const addNewPage = document.querySelector(".add-new-page");
-
 addNewBtn.addEventListener("click", showPage);
 
 function showPage() {
@@ -61,11 +56,6 @@ function showPage() {
 }
 
 // Add new task
-const taskList = document.querySelector(".tasks-list");
-const taskInput = document.querySelector("#new-task");
-const addTaskBtn = document.querySelector('input[type="submit"]');
-const addNewForm = document.querySelector(".input-field form");
-
 addNewForm.addEventListener("submit", addTask);
 
 function addTask(e) {
@@ -90,4 +80,28 @@ function addTask(e) {
   taskInput.value = "";
   showPage();
   e.preventDefault();
+}
+// Filter tasks
+filterInput.addEventListener("keydown", filterTasks);
+
+function filterTasks(e) {
+  //to do
+}
+
+// Delete all
+deleteBtn.addEventListener("click", deleteAll);
+
+function deleteAll() {
+  while (taskList.firstChild) {
+    taskList.lastChild.remove();
+  }
+}
+
+//Delete specific one
+taskList.addEventListener("click", deleteOne);
+
+function deleteOne(e) {
+  if (e.target.parentElement.className == "delete-task") {
+    e.target.parentElement.parentElement.remove();
+  }
 }
