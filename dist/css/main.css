@@ -76,6 +76,9 @@ header {
 .move-btn {
   right: calc(100% - 5rem); }
 
+button.add-new-btn {
+  position: fixed; }
+
 .add-new-page {
   position: absolute;
   z-index: 4;
@@ -89,8 +92,6 @@ header {
   width: 100vw;
   padding: 1rem;
   transform: translateX(100%);
-  transition: transform 0.4s ease-in-out;
-  transition: transform 0.6s cubic-bezier(0, 1.11, 0.49, 1.74);
   transition: transform 0.4s cubic-bezier(0.4, 0.67, 0.68, 1.4); }
 
 .show-page {
@@ -100,7 +101,20 @@ header {
   margin-top: 2rem; }
 
 .quotation {
-  margin-top: 130px; }
+  width: 80%;
+  margin: 150px auto 0;
+  font-size: 0.85rem; }
+  .quotation blockquote {
+    margin: 0;
+    padding-left: 1rem;
+    border-left: 2px solid #77a1d3; }
+    .quotation blockquote:before {
+      content: "\201C"; }
+    .quotation blockquote:after {
+      content: "\201D"; }
+  .quotation p {
+    text-align: right;
+    opacity: 0.8; }
 
 main {
   padding: 1rem; }
@@ -113,7 +127,8 @@ main {
     position: relative;
     padding: 5px 10px;
     list-style: none;
-    border: 1px solid #95b0d6; }
+    border: 1px solid #95b0d6;
+    border-radius: 2px; }
     main .task a {
       position: absolute;
       top: 50%;
@@ -122,7 +137,7 @@ main {
       font-size: 1.2rem;
       transition: all 0.4s ease-in-out; }
       main .task a:hover {
-        font-size: 1.4rem; }
+        font-size: 1.35rem; }
     main .task .mark-complete {
       right: 35px;
       color: #ef8e38; }

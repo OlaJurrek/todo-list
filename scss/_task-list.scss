@@ -19,6 +19,7 @@ main {
     padding: 5px 10px;
     list-style: none;
     border: 1px solid #95b0d6;
+    border-radius: 2px;
     a {
       position: absolute;
       top: 50%;
@@ -27,7 +28,7 @@ main {
       font-size: 1.2rem;
       transition: all 0.4s ease-in-out;
       &:hover {
-        font-size: 1.4rem;
+        font-size: 1.35rem;
       }
     }
     .mark-complete {
