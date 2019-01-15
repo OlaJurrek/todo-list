@@ -112,7 +112,9 @@ button.add-new-btn {
       content: "\201C"; }
     .quotation blockquote:after {
       content: "\201D"; }
-  .quotation p {
+  .quotation cite {
+    display: block;
+    margin: 1rem;
     text-align: right;
     opacity: 0.8; }
 
