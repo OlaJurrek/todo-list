@@ -13,6 +13,7 @@
   background-color: #ef8e38;
   border-radius: 50%;
   border: 1.5px solid #95b0d6;
+  box-shadow: 0 8px 6px -6px #777;
   transition: all 0.4s ease-in-out;
   &:hover {
     box-shadow: 0 0 4px 1px #fff;
@@ -30,8 +31,9 @@
   }
 }
 
-.move-btn {
+.add-new-btn.move-btn {
   right: calc(100% - 5rem);
+  box-shadow: 0 8px 6px -6px #777;
 }
 
 button.add-new-btn {
