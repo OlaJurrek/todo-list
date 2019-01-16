@@ -31,8 +31,6 @@ function stayUp(e) {
     e.target.nextElementSibling.classList.add("label-up");
   }
   if (e.target.className == "animated-form" && e.target.value == "") {
-    console.log("hi there");
-    console.log(e.target.className);
     e.target.nextElementSibling.style.transition = "all .4s ease-in-out";
     e.target.nextElementSibling.classList.remove("label-up");
   }
@@ -82,11 +80,18 @@ function addTask(e) {
   showPage();
   e.preventDefault();
 }
-// Filter tasks
-filterInput.addEventListener("keydown", filterTasks);
 
-function filterTasks(e) {
-  //to do
+// Filter tasks
+filterInput.addEventListener("keyup", filterTasks);
+
+function filterTasks() {
+  for (let task of taskList.children) {
+    if (task.textContent.indexOf(filterInput.value) !== -1) {
+      task.style.display = "block";
+    } else {
+      task.style.display = "none";
+    }
+  }
 }
 
 // Delete all
