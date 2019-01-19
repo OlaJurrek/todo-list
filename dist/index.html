@@ -22,7 +22,7 @@
   <body>
     <header>
       <div class="to-do">
-        <h2 class="todo-counter">0</h2>
+        <h2 class="todo-counter"></h2>
         <h2>Still</h2>
         <h2>To Do</h2>
       </div>
@@ -42,7 +42,7 @@
       <h3>New</h3>
       <h3>Task</h3>
     </div>
-    <div class="add-new-page">
+    <div class="side-page add-new-page">
       <div class="input-field">
         <form>
           <input
@@ -76,10 +76,14 @@
         </form>
       </div>
       <ul class="task-list"></ul>
-      <a href="#" class="blue">show completed</a>
-      <a href="#" class="grey">mark all complete</a>
+      <a href="#" class="blue show-completed-btn">show completed</a>
+      <a href="#" class="grey all-complete-btn">mark all complete</a>
       <a href="#" class="dark delete-btn">delete all</a>
     </main>
+    <section class="side-page completed-list-page">
+      <div class="exit-btn"><span></span><span></span></div>
+      <ul class="completed-list"></ul>
+    </section>
     <script src="main.js"></script>
   </body>
 </html>
