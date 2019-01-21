@@ -4,12 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
     <link
-      href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600|Lato:400,700|Oxygen"
+      href="https://fonts.googleapis.com/css?family=Dosis:400,600|Oxygen"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="css/main.css" />
     <link
       rel="stylesheet"
@@ -27,22 +25,33 @@
         <h2>To Do</h2>
       </div>
       <div class="done">
-        <h2 class="done-counter">0</h2>
+        <h2 class="done-counter"></h2>
         <h2>Done</h2>
         <h2>Already</h2>
       </div>
     </header>
-    <div class="current-time"></div>
-    <div class="menu">
-      <p></p>
-      <p></p>
-      <p></p>
+    <h4 class="current-time"></h4>
+    <main>
+      <h1>My Tasks</h1>
+      <div class="filter-field">
+        <form>
+          <input type="text" name="filter" id="filter" class="animated-form" />
+          <label for="filter">Filter Tasks</label>
+        </form>
+      </div>
+      <ul class="todo-list"></ul>
+      <a href="#" class="rectangular-btn all-complete-btn">mark all done</a>
+      <a href="#" class="rectangular-btn delete-btn">delete all</a>
+    </main>
+    <div class="round-btn show-completed-btn">
+      <h3>show</h3>
+      <h3>done</h3>
     </div>
-    <div class="add-new-btn">
-      <h3>New</h3>
-      <h3>Task</h3>
+    <div class="round-btn new-task-btn">
+      <h3>new</h3>
+      <h3>task</h3>
     </div>
-    <div class="side-page add-new-page">
+    <section class="side-page add-new-page">
       <div class="input-field">
         <form>
           <input
@@ -52,11 +61,10 @@
             class="animated-form"
           />
           <label for="new-task">What do you REALLY need to do?</label>
-          <button type="submit" class="add-new-btn">
-            <h3>ADD</h3>
-            <h3>TASK</h3>
+          <button type="submit" class="round-btn">
+            <h3>add</h3>
+            <h3>task</h3>
           </button>
-          <!-- <input type="submit" value="ADD TASK" class="add-new-btn" /> -->
         </form>
       </div>
       <div class="quotation">
@@ -64,24 +72,10 @@
           cite="http://www.planetofsuccess.com/blog/2016/inspiring-focus-quotes/"
         ></blockquote>
         <cite></cite>
-        <!-- <p><span>Mike Hawkins</span></p> -->
       </div>
-    </div>
-    <main>
-      <h1>My Tasks</h1>
-      <div class="filter-field">
-        <form>
-          <input type="text" name="filter" id="filter" class="animated-form" />
-          <label for="filter">Filter Tasks</label>
-        </form>
-      </div>
-      <ul class="task-list"></ul>
-      <a href="#" class="blue show-completed-btn">show completed</a>
-      <a href="#" class="grey all-complete-btn">mark all complete</a>
-      <a href="#" class="dark delete-btn">delete all</a>
-    </main>
+    </section>
     <section class="side-page completed-list-page">
-      <div class="exit-btn"><span></span><span></span></div>
+      <h1>Completed tasks</h1>
       <ul class="completed-list"></ul>
     </section>
     <script src="main.js"></script>

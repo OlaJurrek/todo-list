@@ -1,0 +1,86 @@
+// General button styles
+%btn {
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.4s ease-in-out;
+}
+
+// Round buttons
+.round-btn {
+  @extend %btn;
+  position: absolute;
+  top: 7.5rem;
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $warm-color;
+  border-radius: 50%;
+  border: 1.5px solid $secondary-color;
+  box-shadow: 0 8px 6px -6px #777;
+  cursor: pointer;
+  &:hover {
+    background-color: lighten($warm-color, 5%);
+  }
+  &:focus {
+    outline: none;
+  }
+  h3 {
+    color: $primary-color;
+    font-size: 0.9rem;
+  }
+}
+
+// It's not right that two buttons have the same class add-new-btn - query selector just grabs first and those names are confusing
+.new-task-btn {
+  left: 1rem;
+  z-index: 3;
+}
+
+button.round-btn {
+  // This position fixed doesn't make much sense in RWD perspective. To be changed somehow.
+  //Maybe parent element should be change and then the position of the button could be absolute?
+  position: fixed;
+  left: calc(100% - 5rem);
+  //   right: 1rem; why this right isn't working???
+  z-index: 7;
+}
+
+.show-completed-btn {
+  right: 1rem;
+  z-index: 5;
+}
+
+// Rectangular buttons
+.rectangular-btn {
+  @extend %btn;
+  display: block;
+  width: 240px;
+  padding: 0.5rem 1rem;
+  margin: 10px auto;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 2px;
+  border-radius: 2px;
+  box-shadow: 0 8px 4px -6px #777;
+  &:hover {
+    letter-spacing: 3px;
+  }
+}
+
+.all-complete-btn {
+  background-color: $cold-color;
+  &:hover {
+    background-color: darken($cold-color, 10%);
+  }
+}
+
+.delete-btn {
+  background-color: #2b5876;
+  &:hover {
+    background-color: darken(#2b5876, 10%);
+  }
+}

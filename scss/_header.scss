@@ -13,9 +13,7 @@ header {
 
 .to-do {
   grid-column: 1 / 2;
-  //   color: rgba(255, 255, 255, 0.9);
-  //   min-height: 100%;
-  border-bottom: 3px solid #4286f4;
+  border-bottom: 3px solid $cold-color;
   background-color: #9ad3e052;
   background-color: #5b87e55d;
 }
@@ -25,7 +23,6 @@ header {
   background-color: rgba(55, 59, 68, 0.534);
   background-color: rgba(63, 90, 148, 0.7);
   background: linear-gradient(to right, #5b87e55d, rgba(63, 90, 148, 0.7) 90%);
-  //   height: 100%;
 
   * {
     text-align: end;
@@ -36,28 +33,5 @@ header {
   position: absolute;
   top: 5px;
   left: 1rem;
-  font-size: 0.8rem;
-  font-family: "Dosis", sans-serif;
   color: rgba(255, 255, 255, 0.7);
-}
-
-.menu {
-  position: absolute;
-  top: 7px;
-  right: 1rem;
-
-  p {
-    margin: 0;
-    background-color: rgba(255, 255, 255, 0.7);
-  }
-  p:first-child,
-  p:last-child {
-    width: 17px;
-    height: 2.5px;
-  }
-  p:nth-child(2) {
-    width: 10px;
-    height: 2px;
-    margin: 3px 0 3px 5px;
-  }
 }

@@ -2,9 +2,9 @@
 const currentTimeBox = document.querySelector(".current-time");
 const taskCounter = document.querySelector(".todo-counter");
 const completedCounter = document.querySelector(".done-counter");
-const addNewBtn = document.querySelector(".add-new-btn");
+const newTaskBtn = document.querySelector(".new-task-btn");
 const addNewPage = document.querySelector(".add-new-page");
-const taskList = document.querySelector(".task-list");
+const taskList = document.querySelector(".todo-list");
 const taskInput = document.querySelector("#new-task");
 const addTaskBtn = document.querySelector('input[type="submit"]');
 const addNewForm = document.querySelector(".input-field form");
@@ -13,7 +13,6 @@ const deleteBtn = document.querySelector(".delete-btn");
 const showCompletedBtn = document.querySelector(".show-completed-btn");
 const completedListPage = document.querySelector(".completed-list-page");
 const completedTaskList = document.querySelector(".completed-list");
-const exitBtn = document.querySelector(".exit-btn");
 const markAllBtn = document.querySelector(".all-complete-btn");
 
 // Show current time
@@ -82,20 +81,20 @@ function stayUp(e) {
 }
 
 // Show add new task page
-addNewBtn.addEventListener("click", showPage);
+newTaskBtn.addEventListener("click", showPage);
 
 function showPage() {
   if (!addNewPage.className.includes("show-page")) {
     addNewPage.classList.add("show-page");
-    addNewBtn.classList.add("move-btn");
-    addNewBtn.firstElementChild.textContent = "GO";
-    addNewBtn.lastElementChild.textContent = "BACK";
+    showCompletedBtn.style.zIndex = 2;
+    newTaskBtn.firstElementChild.textContent = "GO";
+    newTaskBtn.lastElementChild.textContent = "BACK";
     randomQuote();
   } else {
     addNewPage.classList.remove("show-page");
-    addNewBtn.classList.remove("move-btn");
-    addNewBtn.firstElementChild.textContent = "NEW";
-    addNewBtn.lastElementChild.textContent = "TASK";
+    showCompletedBtn.style.zIndex = 5;
+    newTaskBtn.firstElementChild.textContent = "NEW";
+    newTaskBtn.lastElementChild.textContent = "TASK";
   }
 }
 
@@ -105,14 +104,13 @@ showCompletedBtn.addEventListener("click", showPage2);
 function showPage2() {
   if (!completedListPage.className.includes("show-page")) {
     completedListPage.classList.add("show-page");
+    showCompletedBtn.firstElementChild.textContent = "GO";
+    showCompletedBtn.lastElementChild.textContent = "BACK";
+  } else {
+    completedListPage.classList.remove("show-page");
+    showCompletedBtn.firstElementChild.textContent = "SHOW";
+    showCompletedBtn.lastElementChild.textContent = "DONE";
   }
-}
-
-// Hide completed list page
-exitBtn.addEventListener("click", hidePage);
-
-function hidePage() {
-  completedListPage.classList.remove("show-page");
 }
 
 // Add new task
