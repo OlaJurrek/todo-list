@@ -18,20 +18,24 @@
     <title>Classic To DO List</title>
   </head>
   <body>
+    <!-- <div class="container"> -->
     <header>
-      <div class="to-do">
-        <h2 class="todo-counter"></h2>
-        <h2>Still</h2>
-        <h2>To Do</h2>
-      </div>
-      <div class="done">
-        <h2 class="done-counter"></h2>
-        <h2>Done</h2>
-        <h2>Already</h2>
+      <div class="lg-wrapper">
+        <div class="to-do">
+          <h2 class="todo-counter"></h2>
+          <h2>Still</h2>
+          <h2>To Do</h2>
+        </div>
+        <div class="done">
+          <h2 class="done-counter"></h2>
+          <h2>Done</h2>
+          <h2>Already</h2>
+        </div>
+        <h4 class="current-time"></h4>
       </div>
     </header>
-    <h4 class="current-time"></h4>
-    <main>
+
+    <main class="sm-wrapper">
       <h1>My Tasks</h1>
       <div class="filter-field">
         <form>
@@ -52,32 +56,37 @@
       <h3>task</h3>
     </div>
     <section class="side-page add-new-page">
-      <div class="input-field">
-        <form>
-          <input
-            type="text"
-            name="new-task"
-            id="new-task"
-            class="animated-form"
-          />
-          <label for="new-task">What do you REALLY need to do?</label>
-          <button type="submit" class="round-btn">
-            <h3>add</h3>
-            <h3>task</h3>
-          </button>
-        </form>
-      </div>
-      <div class="quotation">
-        <blockquote
-          cite="http://www.planetofsuccess.com/blog/2016/inspiring-focus-quotes/"
-        ></blockquote>
-        <cite></cite>
+      <div class="sm-wrapper">
+        <div class="input-field">
+          <form>
+            <input
+              type="text"
+              name="new-task"
+              id="new-task"
+              class="animated-form"
+            />
+            <label for="new-task">What do you REALLY need to do?</label>
+            <button type="submit" class="round-btn">
+              <h3>add</h3>
+              <h3>task</h3>
+            </button>
+          </form>
+        </div>
+        <div class="quotation">
+          <blockquote
+            cite="http://www.planetofsuccess.com/blog/2016/inspiring-focus-quotes/"
+          ></blockquote>
+          <cite></cite>
+        </div>
       </div>
     </section>
     <section class="side-page completed-list-page">
-      <h1>Completed tasks</h1>
-      <ul class="completed-list"></ul>
+      <div class="sm-wrapper">
+        <h1>Completed tasks</h1>
+        <ul class="completed-list"></ul>
+      </div>
     </section>
+    <!-- </div> -->
     <script src="main.js"></script>
   </body>
 </html>

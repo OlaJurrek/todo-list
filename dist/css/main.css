@@ -2,9 +2,11 @@
   box-sizing: border-box; }
 
 body {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   background-color: #fff;
+  background: linear-gradient(#fff 60%, #95b0d6 90%);
   color: #444;
   font-family: "Oxygen", sans-serif; }
 
@@ -134,29 +136,24 @@ button.round-btn {
     background-color: #1d3c51; }
 
 header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   min-height: 9.5rem;
-  background: url(../img/bg-sea.jpeg) no-repeat;
-  background-position: top 10%;
-  background-size: cover; }
-  header > * {
-    padding: 2.5rem 1rem 1rem;
-    color: #fff; }
+  max-height: 250px;
+  background: linear-gradient(to right, #a6b7db5d, rgba(63, 90, 148, 0.7) 90%), url(../img/bg-sea.jpeg) no-repeat;
+  background-size: cover;
+  border-bottom: 3px solid #95b0d6;
+  color: #fff; }
+  header .lg-wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2.5rem 1rem 1rem; }
 
 .to-do {
-  grid-column: 1 / 2;
-  border-bottom: 3px solid #4286f4;
-  background-color: #9ad3e052;
-  background-color: #5b87e55d; }
+  grid-column: 1 / 2; }
 
 .done {
   grid-column: 2 / 3;
-  background-color: rgba(55, 59, 68, 0.534);
-  background-color: rgba(63, 90, 148, 0.7);
-  background: linear-gradient(to right, #5b87e55d, rgba(63, 90, 148, 0.7) 90%); }
-  .done * {
-    text-align: end; }
+  text-align: end; }
 
 .current-time {
   position: absolute;
@@ -241,3 +238,13 @@ ul {
   .task .delete-task {
     right: 5px;
     color: #2b5876; }
+
+@media (min-width: 1024px) {
+  .lg-wrapper {
+    max-width: 1000px;
+    margin: auto; }
+  .sm-wrapper {
+    max-width: 800px;
+    margin: auto; }
+  .current-time {
+    left: 5rem; } }

@@ -1,32 +1,27 @@
 header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   min-height: 9.5rem;
-  background: url(../img/bg-sea.jpeg) no-repeat;
-  background-position: top 10%;
+  max-height: 250px;
+  background: linear-gradient(to right, #a6b7db5d, rgba(63, 90, 148, 0.7) 90%),
+    url(../img/bg-sea.jpeg) no-repeat;
   background-size: cover;
-  > * {
+  border-bottom: 3px solid $secondary-color;
+  color: #fff;
+
+  .lg-wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding: 2.5rem 1rem 1rem;
-    color: #fff;
   }
 }
 
 .to-do {
   grid-column: 1 / 2;
-  border-bottom: 3px solid $cold-color;
-  background-color: #9ad3e052;
-  background-color: #5b87e55d;
 }
 
 .done {
   grid-column: 2 / 3;
-  background-color: rgba(55, 59, 68, 0.534);
-  background-color: rgba(63, 90, 148, 0.7);
-  background: linear-gradient(to right, #5b87e55d, rgba(63, 90, 148, 0.7) 90%);
-
-  * {
-    text-align: end;
-  }
+  text-align: end;
 }
 
 .current-time {

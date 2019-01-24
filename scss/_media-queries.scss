@@ -1,0 +1,23 @@
+@media (min-width: 1024px) {
+  .lg-wrapper {
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .sm-wrapper {
+    max-width: 800px;
+    margin: auto;
+  }
+
+  main.sm-wrapper {
+    // background: linear-gradient(
+    //   to right,
+    //   #a6b7db5d,
+    //   rgba(63, 90, 148, 0.7) 90%
+    // );
+  }
+
+  .current-time {
+    left: 5rem;
+  }
+}

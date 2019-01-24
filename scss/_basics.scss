@@ -4,9 +4,11 @@
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   background-color: #fff;
+  background: linear-gradient(#fff 60%, $secondary-color 90%);
   color: $primary-color;
   font-family: "Oxygen", sans-serif;
 }
