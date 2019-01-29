@@ -33,19 +33,13 @@
   }
 }
 
-// It's not right that two buttons have the same class add-new-btn - query selector just grabs first and those names are confusing
 .new-task-btn {
   left: 1rem;
   z-index: 3;
 }
 
 button.round-btn {
-  // This position fixed doesn't make much sense in RWD perspective. To be changed somehow.
-  //Maybe parent element should be change and then the position of the button could be absolute?
-  position: fixed;
-  left: calc(100% - 5rem);
-  //   right: 1rem; why this right isn't working???
-  z-index: 7;
+  right: 1rem;
 }
 
 .show-completed-btn {
@@ -59,7 +53,7 @@ button.round-btn {
   display: block;
   width: 240px;
   padding: 0.5rem 1rem;
-  margin: 10px auto;
+  margin: 1rem auto;
   font-size: 0.8rem;
   font-weight: 400;
   color: #fff;

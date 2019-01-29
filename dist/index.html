@@ -18,7 +18,6 @@
     <title>Classic To DO List</title>
   </head>
   <body>
-    <!-- <div class="container"> -->
     <header>
       <div class="lg-wrapper">
         <div class="to-do">
@@ -32,9 +31,20 @@
           <h2>Already</h2>
         </div>
         <h4 class="current-time"></h4>
+        <div class="round-btn show-completed-btn">
+          <h3>show</h3>
+          <h3>done</h3>
+        </div>
+        <div class="round-btn new-task-btn">
+          <h3>new</h3>
+          <h3>task</h3>
+        </div>
+        <button type="submit" class="round-btn" form="new-task-form">
+          <h3>add</h3>
+          <h3>task</h3>
+        </button>
       </div>
     </header>
-
     <main class="sm-wrapper">
       <h1>My Tasks</h1>
       <div class="filter-field">
@@ -47,18 +57,10 @@
       <a href="#" class="rectangular-btn all-complete-btn">mark all done</a>
       <a href="#" class="rectangular-btn delete-btn">delete all</a>
     </main>
-    <div class="round-btn show-completed-btn">
-      <h3>show</h3>
-      <h3>done</h3>
-    </div>
-    <div class="round-btn new-task-btn">
-      <h3>new</h3>
-      <h3>task</h3>
-    </div>
     <section class="side-page add-new-page">
       <div class="sm-wrapper">
         <div class="input-field">
-          <form>
+          <form id="new-task-form">
             <input
               type="text"
               name="new-task"
@@ -66,10 +68,6 @@
               class="animated-form"
             />
             <label for="new-task">What do you REALLY need to do?</label>
-            <button type="submit" class="round-btn">
-              <h3>add</h3>
-              <h3>task</h3>
-            </button>
           </form>
         </div>
         <div class="quotation">
@@ -86,7 +84,6 @@
         <ul class="completed-list"></ul>
       </div>
     </section>
-    <!-- </div> -->
     <script src="main.js"></script>
   </body>
 </html>

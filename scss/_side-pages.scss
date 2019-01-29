@@ -1,6 +1,6 @@
+// General side page styles
 .side-page {
   position: absolute;
-  // z-index: 4;
   background: linear-gradient(#fff 20%, #77a1d3 80%, $warm-color);
   top: 0;
   bottom: 100%;
@@ -12,18 +12,18 @@
   transition: transform 0.4s cubic-bezier(0.4, 0.67, 0.68, 1.4);
 }
 
+.side-page.show-page {
+  transform: translateX(0);
+}
+
+// Add new task page
 .add-new-page {
   z-index: 2;
   transform: translateX(100%);
 }
 
-.side-page.show-page {
-  transform: translateX(0);
-}
-
 .input-field {
   margin-top: 2rem;
-  // padding: inherit;
 }
 
 .quotation {
@@ -35,11 +35,9 @@
     margin: 0;
     padding-left: 1rem;
     border-left: 2px solid #77a1d3;
-
     &:before {
       content: "\201C";
     }
-
     &:after {
       content: "\201D";
     }
@@ -57,4 +55,7 @@
 .completed-list-page {
   transform: translateX(-100%);
   z-index: 4;
+  h1 {
+    margin-bottom: 2rem;
+  }
 }

@@ -8,31 +8,28 @@ body {
   background-color: #fff;
   background: linear-gradient(#fff 60%, #95b0d6 90%);
   color: #444;
-  font-family: "Oxygen", sans-serif; }
+  font-family: "Oxygen", sans-serif;
+  overflow: hidden; }
 
 h1, h2, h3, h4 {
   margin: 0;
   padding: 0;
-  font-family: "Dosis", sans-serif; }
+  font-family: "Dosis", sans-serif;
+  font-weight: 400; }
 
 h1 {
+  margin-top: 1rem;
   font-size: 1.7rem;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-align: center; }
+  letter-spacing: 2px; }
 
 h2 {
   font-size: 1.2rem;
-  font-weight: 400;
   line-height: 1.2;
   letter-spacing: 2px; }
 
 h3 {
   font-weight: 600;
   letter-spacing: 1px; }
-
-h4 {
-  font-weight: 400; }
 
 a {
   text-decoration: none; }
@@ -103,9 +100,7 @@ label {
   z-index: 3; }
 
 button.round-btn {
-  position: fixed;
-  left: calc(100% - 5rem);
-  z-index: 7; }
+  right: 1rem; }
 
 .show-completed-btn {
   right: 1rem;
@@ -115,7 +110,7 @@ button.round-btn {
   display: block;
   width: 240px;
   padding: 0.5rem 1rem;
-  margin: 10px auto;
+  margin: 1rem auto;
   font-size: 0.8rem;
   font-weight: 400;
   color: #fff;
@@ -142,11 +137,12 @@ header {
   background-size: cover;
   border-bottom: 3px solid #95b0d6;
   color: #fff; }
-  header .lg-wrapper {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 2.5rem 1rem 1rem; }
+
+.lg-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 2.5rem 1rem 1rem; }
 
 .to-do {
   grid-column: 1 / 2; }
@@ -173,12 +169,12 @@ header {
   padding: 1rem;
   transition: transform 0.4s cubic-bezier(0.4, 0.67, 0.68, 1.4); }
 
+.side-page.show-page {
+  transform: translateX(0); }
+
 .add-new-page {
   z-index: 2;
   transform: translateX(100%); }
-
-.side-page.show-page {
-  transform: translateX(0); }
 
 .input-field {
   margin-top: 2rem; }
@@ -204,9 +200,13 @@ header {
 .completed-list-page {
   transform: translateX(-100%);
   z-index: 4; }
+  .completed-list-page h1 {
+    margin-bottom: 2rem; }
 
 main {
   padding: 1rem; }
+  main h1 {
+    text-align: center; }
 
 .filter-field {
   margin-top: 2rem;
@@ -223,6 +223,8 @@ ul {
   border-radius: 2px; }
   .task:nth-child(1n + 2) {
     margin-top: 1px; }
+  .task:last-child {
+    margin-bottom: 2rem; }
   .task a {
     position: absolute;
     top: 50%;
@@ -242,9 +244,16 @@ ul {
 @media (min-width: 1024px) {
   .lg-wrapper {
     max-width: 1000px;
-    margin: auto; }
+    margin: auto;
+    padding: 2.5rem 6rem 0; }
+    .lg-wrapper h2:nth-child(1n + 2) {
+      margin-top: 0.4rem; }
   .sm-wrapper {
-    max-width: 800px;
+    max-width: 700px;
     margin: auto; }
   .current-time {
-    left: 5rem; } }
+    left: 5.5rem; }
+  .task:nth-child(1n + 2) {
+    margin-top: 0.5rem; }
+  .side-page {
+    transition-duration: 0.6s; } }

@@ -1,5 +1,9 @@
 main {
   padding: 1rem;
+
+  h1 {
+    text-align: center;
+  }
 }
 
 .filter-field {
@@ -20,6 +24,9 @@ ul {
   border-radius: 2px;
   &:nth-child(1n + 2) {
     margin-top: 1px;
+  }
+  &:last-child {
+    margin-bottom: 2rem;
   }
   a {
     position: absolute;

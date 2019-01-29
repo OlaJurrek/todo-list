@@ -6,13 +6,13 @@ header {
   background-size: cover;
   border-bottom: 3px solid $secondary-color;
   color: #fff;
+}
 
-  .lg-wrapper {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 2.5rem 1rem 1rem;
-  }
+.lg-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 2.5rem 1rem 1rem;
 }
 
 .to-do {
