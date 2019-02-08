@@ -13,8 +13,15 @@ const completedTaskList = document.querySelector(".completed-list");
 
 // Show current time
 const currentTimeBox = document.querySelector(".current-time");
+const options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric"
+};
 const today = new Date();
-currentTimeBox.innerHTML = "Today is " + today.toLocaleDateString("pl-PL");
+currentTimeBox.innerHTML =
+  "Today is " + today.toLocaleDateString("en-GB", options);
 
 // Show tasks stored in LS
 document.addEventListener("DOMContentLoaded", showTasks);
@@ -288,7 +295,7 @@ const cite = document.querySelector("cite");
 function getQuotes() {
   const xhr = new XMLHttpRequest();
 
-  xhr.open("GET", "qutes.json", true);
+  xhr.open("GET", "quotes.json", true);
 
   xhr.onload = function() {
     if (this.status === 200) {

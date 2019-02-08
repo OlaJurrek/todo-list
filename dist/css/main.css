@@ -133,7 +133,7 @@ button.round-btn {
 header {
   min-height: 9.5rem;
   max-height: 250px;
-  background: linear-gradient(to right, #a6b7db5d, rgba(63, 90, 148, 0.7) 90%), url(../img/bg-sea.jpeg) no-repeat;
+  background: linear-gradient(to right, #a6b7db5d, rgba(63, 90, 148, 0.7) 90%), url(../img/bg.jpeg) no-repeat;
   background-size: cover;
   border-bottom: 3px solid #95b0d6;
   color: #fff; }
@@ -241,16 +241,26 @@ ul {
     right: 5px;
     color: #2b5876; }
 
-@media (min-width: 1024px) {
+@media (min-width: 550px) {
   .lg-wrapper {
-    max-width: 1000px;
+    padding-right: 5rem;
+    padding-left: 5rem; }
+  .sm-wrapper {
+    padding-right: 4rem;
+    padding-left: 4rem; } }
+
+@media (min-width: 700px) {
+  .sm-wrapper {
+    max-width: 700px;
+    margin: auto; } }
+
+@media (min-width: 900px) {
+  .lg-wrapper {
+    max-width: 900px;
     margin: auto;
     padding: 2.5rem 6rem 0; }
     .lg-wrapper h2:nth-child(1n + 2) {
       margin-top: 0.4rem; }
-  .sm-wrapper {
-    max-width: 700px;
-    margin: auto; }
   .current-time {
     left: 5.5rem; }
   .task:nth-child(1n + 2) {
