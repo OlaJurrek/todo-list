@@ -49,13 +49,18 @@
       <h1>My Tasks</h1>
       <div class="filter-field">
         <form>
-          <input type="text" name="filter" id="filter" class="animated-form" />
+          <input
+            type="text"
+            name="filter"
+            id="new-filter"
+            class="animated-form"
+          />
           <label for="filter">Filter Tasks</label>
         </form>
       </div>
       <ul class="todo-list"></ul>
       <a href="#" class="rectangular-btn all-complete-btn">mark all done</a>
-      <a href="#" class="rectangular-btn delete-btn">delete all</a>
+      <a href="#" class="rectangular-btn all-delete-btn">delete all</a>
     </main>
     <section class="side-page add-new-page">
       <div class="sm-wrapper">
@@ -81,9 +86,35 @@
     <section class="side-page completed-list-page">
       <div class="sm-wrapper">
         <h1>Completed tasks</h1>
+        <div class="filter-field">
+          <form>
+            <input
+              type="text"
+              name="filter"
+              id="completed-filter"
+              class="animated-form"
+            />
+            <label for="filter">Filter Tasks</label>
+          </form>
+        </div>
         <ul class="completed-list"></ul>
+        <a href="#" class="rectangular-btn all-delete-btn">delete all</a>
       </div>
     </section>
+    <!-- Attempt to create a modal window -->
+    <!-- <div class="modal-bg">
+      <div id="empty-input-alert" class="modal">
+        <h2>Add a task</h2>
+        <button class="rectangular-btn">OK</button>
+      </div>
+    </div>
+    <div class="modal-bg">
+      <div id="delete-confirmation" class="modal">
+        <h2>Do you want to delete the task?</h2>
+        <button class="rectangular-btn">YES</button>
+        <button class="rectangular-btn">NO</button>
+      </div>
+    </div> -->
     <script src="main.js"></script>
   </body>
 </html>

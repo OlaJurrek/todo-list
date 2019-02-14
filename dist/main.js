@@ -5,8 +5,7 @@ const taskList = document.querySelector(".todo-list");
 const taskInput = document.querySelector("#new-task");
 const addTaskBtn = document.querySelector("button.round-btn");
 const addNewForm = document.querySelector(".input-field form");
-const filterInput = document.querySelector("#filter");
-const deleteBtn = document.querySelector(".delete-btn");
+
 const showCompletedBtn = document.querySelector(".show-completed-btn");
 const completedListPage = document.querySelector(".completed-list-page");
 const completedTaskList = document.querySelector(".completed-list");
@@ -141,7 +140,10 @@ function createTaskInUI(value, list, status = "completed") {
 
 function addNewTask(e) {
   if (taskInput.value === "") {
-    alert("Add new task");
+    // alert("Add new task");
+    // Try to build modal here!
+    showModalDelete();
+    e.preventDefault();
     return;
   }
   // Add new task to UI
@@ -169,12 +171,16 @@ function addToLocalStorage(task) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// Filter tasks
-filterInput.addEventListener("keyup", filterTasks);
+// Task filters
+document.querySelector("#new-filter").addEventListener("keyup", filterTasks);
+document
+  .querySelector("#completed-filter")
+  .addEventListener("keyup", filterTasks);
 
-function filterTasks() {
-  for (const task of taskList.children) {
-    if (task.textContent.indexOf(filterInput.value) !== -1) {
+function filterTasks(e) {
+  const filteredList = e.target.parentElement.parentElement.nextElementSibling;
+  for (const task of filteredList.children) {
+    if (task.textContent.indexOf(e.target.value) !== -1) {
       task.style.display = "block";
     } else {
       task.style.display = "none";
@@ -182,10 +188,12 @@ function filterTasks() {
   }
 }
 
-// Delete all
-deleteBtn.addEventListener("click", deleteAll);
+// Delete all new tasks
+const deleteAllNewBtn = document.querySelector("main .all-delete-btn");
 
-function deleteAll() {
+deleteAllNewBtn.addEventListener("click", deleteAllNew);
+
+function deleteAllNew() {
   while (taskList.firstChild) {
     taskList.lastChild.remove();
   }
@@ -193,27 +201,27 @@ function deleteAll() {
   countTasks();
 }
 
-//Delete specific one
+//Delete one new task
 taskList.addEventListener("click", deleteOne);
 
 function deleteOne(e) {
   if (e.target.parentElement.className == "delete-task") {
     let deleteMe = e.target.parentElement.parentElement;
-    removeTaskFromLocalStorage(deleteMe.textContent);
+    removeTaskFromLocalStorage(deleteMe.textContent, "tasks");
     deleteMe.remove();
     countTasks();
   }
 }
 
 // Remove one task from LS
-function removeTaskFromLocalStorage(taskToRemove) {
-  const tasks = JSON.parse(localStorage.getItem("tasks"));
+function removeTaskFromLocalStorage(taskToRemove, LSlist) {
+  const tasks = JSON.parse(localStorage.getItem(LSlist));
   tasks.forEach(function(task) {
     if (task == taskToRemove) {
       tasks.splice(tasks.indexOf(task), 1);
     }
   });
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem(LSlist, JSON.stringify(tasks));
 }
 
 // Mark all tasks as complete
@@ -237,7 +245,7 @@ function markAllComplete() {
   // Set new completed task list to LS
   localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   // Clear new task list in LS
-  deleteAll();
+  deleteAllNew();
   // Add all new tasks to completed task list in UI
   for (const task of justCompletedTasks) {
     createTaskInUI(task, completedTaskList);
@@ -252,7 +260,7 @@ taskList.addEventListener("click", markOneComplete);
 function markOneComplete(e) {
   if (e.target.parentElement.className == "mark-complete") {
     let completedTask = e.target.parentElement.parentElement;
-    removeTaskFromLocalStorage(completedTask.textContent);
+    removeTaskFromLocalStorage(completedTask.textContent, "tasks");
     let completedTasks;
     if (localStorage.getItem("completedTasks") === null) {
       completedTasks = [];
@@ -265,6 +273,33 @@ function markOneComplete(e) {
     completedTask.remove();
     createTaskInUI(completedTask.textContent, completedTaskList);
     countTasks();
+    countCompleted();
+  }
+}
+
+// Delete all completed tasks
+const deleteAllCompletedBtn = document.querySelector(
+  ".completed-list-page .all-delete-btn"
+);
+
+deleteAllCompletedBtn.addEventListener("click", deleteAllCompleted);
+
+function deleteAllCompleted() {
+  while (completedTaskList.firstChild) {
+    completedTaskList.lastChild.remove();
+  }
+  localStorage.removeItem("completedTasks");
+  countCompleted();
+}
+
+// Delete one completed task
+completedTaskList.addEventListener("click", deleteOneCompleted);
+
+function deleteOneCompleted(e) {
+  if (e.target.parentElement.className == "delete-task") {
+    let deleteMe = e.target.parentElement.parentElement;
+    removeTaskFromLocalStorage(deleteMe.textContent, "completedTasks");
+    deleteMe.remove();
     countCompleted();
   }
 }
@@ -307,6 +342,8 @@ function getQuotes() {
     }
   };
 
+  xhr.onerror = quoteBox.remove();
+
   xhr.send();
 }
 
@@ -315,4 +352,34 @@ function randomQuote(quotes) {
   const randomNumber = Math.floor(Math.random() * quotesAmount);
   quoteBox.textContent = quotes[randomNumber].quote;
   cite.textContent = quotes[randomNumber].author;
+}
+
+// Attemps of creating modal
+const modalAlert = document.getElementById("empty-input-alert");
+const modalConfirm = document.getElementById("delete-confirmation");
+
+function showModalDelete() {
+  modalConfirm.parentElement.style.display = "flex";
+  modalConfirm.children[1].addEventListener("click", deleteOne);
+  modalConfirm.children[2].addEventListener("click", hideModal(modalConfirm));
+}
+
+function showModalDeleteAll() {
+  console.log("where are you");
+  modalConfirm.firstElementChild.textContent =
+    "Do you want to delete all the tasks?";
+
+  modalConfirm.parentElement.style.display = "flex";
+  modalConfirm.children[1].addEventListener("click", deleteAll);
+  modalConfirm.children[2].addEventListener("click", hideModal(modalConfirm));
+}
+
+function showModalAlert() {
+  modalAlert.parentElement.style.display = "flex";
+  modalAlert.parentElement.addEventListener("click", hideModal(modalAlert));
+}
+
+function hideModal(modal) {
+  // modal.parentElement.style.display = "none";
+  console.log("Hidemodal here");
 }

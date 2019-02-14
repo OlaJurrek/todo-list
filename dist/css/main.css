@@ -125,9 +125,9 @@ button.round-btn {
   .all-complete-btn:hover {
     background-color: #1267f1; }
 
-.delete-btn {
+.all-delete-btn {
   background-color: #2b5876; }
-  .delete-btn:hover {
+  .all-delete-btn:hover {
     background-color: #1d3c51; }
 
 header {
@@ -232,14 +232,49 @@ ul {
     padding: 0 5px;
     font-size: 1.2rem;
     transition: all 0.4s ease-in-out; }
-    .task a:hover {
-      font-size: 1.35rem; }
   .task .mark-complete {
     right: 35px;
     color: #ef8e38; }
+    .task .mark-complete:hover {
+      color: #83430b; }
   .task .delete-task {
     right: 5px;
     color: #2b5876; }
+    .task .delete-task:hover {
+      color: #172e3e; }
+
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(16, 32, 43, 0.266667);
+  z-index: 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none; }
+
+.modal {
+  width: 300px;
+  height: 150px;
+  padding: 0 1rem;
+  border-radius: 5px;
+  background-color: #efeff0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+  .modal h2 {
+    margin-top: 1rem;
+    font-weight: 600;
+    text-align: center; }
+  .modal button {
+    width: 100%;
+    background-color: #ef8e38;
+    border: none; }
+  .modal button:nth-child(3) {
+    background-color: #2b5876; }
 
 @media (min-width: 550px) {
   .lg-wrapper {

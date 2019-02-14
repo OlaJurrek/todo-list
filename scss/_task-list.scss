@@ -35,16 +35,19 @@ ul {
     padding: 0 5px;
     font-size: 1.2rem;
     transition: all 0.4s ease-in-out;
-    &:hover {
-      font-size: 1.35rem;
-    }
   }
   .mark-complete {
     right: 35px;
     color: $warm-color;
+    &:hover {
+      color: darken($warm-color, 30%);
+    }
   }
   .delete-task {
     right: 5px;
     color: #2b5876;
+    &:hover {
+      color: darken(#2b5876, 15%);
+    }
   }
 }
