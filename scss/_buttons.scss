@@ -40,6 +40,8 @@
 
 button.round-btn {
   right: 1rem;
+  z-index: 5;
+  visibility: hidden;
 }
 
 .show-completed-btn {

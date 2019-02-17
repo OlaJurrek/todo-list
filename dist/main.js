@@ -5,7 +5,6 @@ const taskList = document.querySelector(".todo-list");
 const taskInput = document.querySelector("#new-task");
 const addTaskBtn = document.querySelector("button.round-btn");
 const addNewForm = document.querySelector(".input-field form");
-
 const showCompletedBtn = document.querySelector(".show-completed-btn");
 const completedListPage = document.querySelector(".completed-list-page");
 const completedTaskList = document.querySelector(".completed-list");
@@ -84,14 +83,14 @@ newTaskBtn.addEventListener("click", showPage);
 function showPage() {
   if (!addNewPage.className.includes("show-page")) {
     addNewPage.classList.add("show-page");
-    addTaskBtn.style.zIndex = 5;
+    addTaskBtn.style.visibility = "visible";
     newTaskBtn.firstElementChild.textContent = "GO";
     newTaskBtn.lastElementChild.textContent = "BACK";
     // Display random quote
     getQuotes();
   } else {
     addNewPage.classList.remove("show-page");
-    addTaskBtn.style.zIndex = -1;
+    addTaskBtn.style.visibility = "hidden";
     newTaskBtn.firstElementChild.textContent = "NEW";
     newTaskBtn.lastElementChild.textContent = "TASK";
   }
@@ -142,7 +141,8 @@ function addNewTask(e) {
   if (taskInput.value === "") {
     // alert("Add new task");
     // Try to build modal here!
-    showModalDelete();
+    // showModalDelete();
+    showAlert();
     e.preventDefault();
     return;
   }
@@ -354,32 +354,15 @@ function randomQuote(quotes) {
   cite.textContent = quotes[randomNumber].author;
 }
 
-// Attemps of creating modal
-const modalAlert = document.getElementById("empty-input-alert");
-const modalConfirm = document.getElementById("delete-confirmation");
+// Show alert if input field is empty
+const label = document.querySelector("#new-task-form label");
 
-function showModalDelete() {
-  modalConfirm.parentElement.style.display = "flex";
-  modalConfirm.children[1].addEventListener("click", deleteOne);
-  modalConfirm.children[2].addEventListener("click", hideModal(modalConfirm));
-}
-
-function showModalDeleteAll() {
-  console.log("where are you");
-  modalConfirm.firstElementChild.textContent =
-    "Do you want to delete all the tasks?";
-
-  modalConfirm.parentElement.style.display = "flex";
-  modalConfirm.children[1].addEventListener("click", deleteAll);
-  modalConfirm.children[2].addEventListener("click", hideModal(modalConfirm));
-}
-
-function showModalAlert() {
-  modalAlert.parentElement.style.display = "flex";
-  modalAlert.parentElement.addEventListener("click", hideModal(modalAlert));
-}
-
-function hideModal(modal) {
-  // modal.parentElement.style.display = "none";
-  console.log("Hidemodal here");
+function showAlert() {
+  const label = document.querySelector("#new-task-form label");
+  label.classList.add("alert");
+  label.textContent = "Add a new task first";
+  setTimeout(function() {
+    label.classList.remove("alert");
+    label.textContent = "What do you REALLY need to do?";
+  }, 1500);
 }

@@ -68,6 +68,12 @@ label {
   color: #aaaaaa;
   transition: all 0.4s ease-in-out; }
 
+.alert {
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #b35c0e; }
+
 .round-btn, .rectangular-btn {
   text-align: center;
   text-transform: uppercase;
@@ -100,7 +106,9 @@ label {
   z-index: 3; }
 
 button.round-btn {
-  right: 1rem; }
+  right: 1rem;
+  z-index: 5;
+  visibility: hidden; }
 
 .show-completed-btn {
   right: 1rem;
@@ -242,39 +250,6 @@ ul {
     color: #2b5876; }
     .task .delete-task:hover {
       color: #172e3e; }
-
-.modal-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(16, 32, 43, 0.266667);
-  z-index: 6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: none; }
-
-.modal {
-  width: 300px;
-  height: 150px;
-  padding: 0 1rem;
-  border-radius: 5px;
-  background-color: #efeff0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around; }
-  .modal h2 {
-    margin-top: 1rem;
-    font-weight: 600;
-    text-align: center; }
-  .modal button {
-    width: 100%;
-    background-color: #ef8e38;
-    border: none; }
-  .modal button:nth-child(3) {
-    background-color: #2b5876; }
 
 @media (min-width: 550px) {
   .lg-wrapper {
