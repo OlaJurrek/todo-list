@@ -340,20 +340,14 @@ const cite = document.querySelector("cite");
 function getQuotes() {
   const xhr = new XMLHttpRequest();
 
-  xhr.open("GET", "quotes.json", true);
+  xhr.open("GET", "js/quotes.json", true);
 
   xhr.onload = function() {
     if (this.status === 200) {
       const quotes = JSON.parse(this.responseText);
       randomQuote(quotes);
-    } else {
-      // Remove left border and quotes on page if it's impossible to display a quote
-      quoteBox.remove();
     }
   };
-
-  xhr.onerror = quoteBox.remove();
-
   xhr.send();
 }
 
