@@ -78,9 +78,9 @@ function stayUp(e) {
 }
 
 // Show add new task page
-newTaskBtn.addEventListener("click", showPage);
+newTaskBtn.addEventListener("click", showNewTaskPage);
 
-function showPage() {
+function showNewTaskPage() {
   if (!addNewPage.className.includes("show-page")) {
     addNewPage.classList.add("show-page");
     addTaskBtn.style.visibility = "visible";
@@ -97,9 +97,9 @@ function showPage() {
 }
 
 // Show completed list page
-showCompletedBtn.addEventListener("click", showPage2);
+showCompletedBtn.addEventListener("click", showCompletedPage);
 
-function showPage2() {
+function showCompletedPage() {
   if (!completedListPage.className.includes("show-page")) {
     completedListPage.classList.add("show-page");
     showCompletedBtn.style.top = "1.3rem";
@@ -139,9 +139,6 @@ function createTaskInUI(value, list, status = "completed") {
 
 function addNewTask(e) {
   if (taskInput.value === "") {
-    // alert("Add new task");
-    // Try to build modal here!
-    // showModalDelete();
     showAlert();
     e.preventDefault();
     return;
@@ -155,8 +152,21 @@ function addNewTask(e) {
   // Clear input field
   taskInput.value = "";
   // Go back to main page
-  showPage();
+  showNewTaskPage();
   e.preventDefault();
+}
+
+// Show alert if input field is empty
+const label = document.querySelector("#new-task-form label");
+
+function showAlert() {
+  const label = document.querySelector("#new-task-form label");
+  label.classList.add("alert");
+  label.textContent = "Add a new task first";
+  setTimeout(function() {
+    label.classList.remove("alert");
+    label.textContent = "What do you REALLY need to do?";
+  }, 1500);
 }
 
 // Add new task to LocalStorage
@@ -352,17 +362,4 @@ function randomQuote(quotes) {
   const randomNumber = Math.floor(Math.random() * quotesAmount);
   quoteBox.textContent = quotes[randomNumber].quote;
   cite.textContent = quotes[randomNumber].author;
-}
-
-// Show alert if input field is empty
-const label = document.querySelector("#new-task-form label");
-
-function showAlert() {
-  const label = document.querySelector("#new-task-form label");
-  label.classList.add("alert");
-  label.textContent = "Add a new task first";
-  setTimeout(function() {
-    label.classList.remove("alert");
-    label.textContent = "What do you REALLY need to do?";
-  }, 1500);
 }
