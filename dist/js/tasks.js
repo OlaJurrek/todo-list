@@ -1,27 +1,10 @@
 //Define main UI variables
-const newTaskBtn = document.querySelector(".new-task-btn");
-const addNewPage = document.querySelector(".add-new-page");
-const taskList = document.querySelector(".todo-list");
 const taskInput = document.querySelector("#new-task");
-const addTaskBtn = document.querySelector("button.round-btn");
 const addNewForm = document.querySelector(".input-field form");
-const showCompletedBtn = document.querySelector(".show-completed-btn");
-const completedListPage = document.querySelector(".completed-list-page");
+const taskList = document.querySelector(".todo-list");
 const completedTaskList = document.querySelector(".completed-list");
 
-// Show current time
-const currentTimeBox = document.querySelector(".current-time");
-const options = {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric"
-};
-const today = new Date();
-currentTimeBox.innerHTML =
-  "Today is " + today.toLocaleDateString("en-GB", options);
-
-// Show tasks stored in LS
+// Show new tasks stored in LS
 document.addEventListener("DOMContentLoaded", showTasks);
 
 function showTasks() {
@@ -36,8 +19,25 @@ function showTasks() {
   for (const task of tasks) {
     createTaskInUI(task, taskList, "new");
   }
-  // Update new task counter
   countTasks();
+}
+
+// Show completed task on completed task page
+document.addEventListener("DOMContentLoaded", showCompletedTasks);
+
+function showCompletedTasks() {
+  // check if there is sth in LS
+  let completedTasks;
+  if (localStorage.getItem("completedTasks") === null) {
+    completedTasks = [];
+  } else {
+    completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
+  }
+
+  for (const task of completedTasks) {
+    createTaskInUI(task, completedTaskList);
+  }
+  countCompleted();
 }
 
 // Show number of tasks to do
@@ -52,65 +52,6 @@ const completedCounter = document.querySelector(".done-counter");
 
 function countCompleted() {
   completedCounter.innerHTML = completedTaskList.children.length;
-}
-
-// Label goes up if the input is focused
-document.body.addEventListener("focusin", labelUp);
-
-function labelUp(e) {
-  if (e.target.className == "animated-form") {
-    e.target.nextElementSibling.classList.add("label-up");
-  }
-}
-
-// Block label to come back into position if there is a value in the input
-document.body.addEventListener("focusout", stayUp);
-
-function stayUp(e) {
-  if (e.target.className == "animated-form" && e.target.value !== "") {
-    e.target.nextElementSibling.style.transition = "none";
-    e.target.nextElementSibling.classList.add("label-up");
-  }
-  if (e.target.className == "animated-form" && e.target.value == "") {
-    e.target.nextElementSibling.style.transition = "all .4s ease-in-out";
-    e.target.nextElementSibling.classList.remove("label-up");
-  }
-}
-
-// Show add new task page
-newTaskBtn.addEventListener("click", showNewTaskPage);
-
-function showNewTaskPage() {
-  if (!addNewPage.className.includes("show-page")) {
-    addNewPage.classList.add("show-page");
-    addTaskBtn.style.visibility = "visible";
-    newTaskBtn.firstElementChild.textContent = "GO";
-    newTaskBtn.lastElementChild.textContent = "BACK";
-    // Display random quote
-    getQuotes();
-  } else {
-    addNewPage.classList.remove("show-page");
-    addTaskBtn.style.visibility = "hidden";
-    newTaskBtn.firstElementChild.textContent = "NEW";
-    newTaskBtn.lastElementChild.textContent = "TASK";
-  }
-}
-
-// Show completed list page
-showCompletedBtn.addEventListener("click", showCompletedPage);
-
-function showCompletedPage() {
-  if (!completedListPage.className.includes("show-page")) {
-    completedListPage.classList.add("show-page");
-    showCompletedBtn.style.top = "1.3rem";
-    showCompletedBtn.firstElementChild.textContent = "GO";
-    showCompletedBtn.lastElementChild.textContent = "BACK";
-  } else {
-    completedListPage.classList.remove("show-page");
-    showCompletedBtn.style.top = "7.5rem";
-    showCompletedBtn.firstElementChild.textContent = "SHOW";
-    showCompletedBtn.lastElementChild.textContent = "DONE";
-  }
 }
 
 // Add new task
@@ -157,8 +98,6 @@ function addNewTask(e) {
 }
 
 // Show alert if input field is empty
-const label = document.querySelector("#new-task-form label");
-
 function showAlert() {
   const label = document.querySelector("#new-task-form label");
   label.classList.add("alert");
@@ -260,7 +199,6 @@ function markAllComplete() {
   for (const task of justCompletedTasks) {
     createTaskInUI(task, completedTaskList);
   }
-  // Update completed tasks counter
   countCompleted();
 }
 
@@ -312,48 +250,4 @@ function deleteOneCompleted(e) {
     deleteMe.remove();
     countCompleted();
   }
-}
-
-// Show completed task on completed task page
-document.addEventListener("DOMContentLoaded", showCompletedTasks);
-
-function showCompletedTasks() {
-  // check if there is sth in LS
-  let completedTasks;
-  if (localStorage.getItem("completedTasks") === null) {
-    completedTasks = [];
-  } else {
-    completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
-  }
-
-  for (const task of completedTasks) {
-    createTaskInUI(task, completedTaskList);
-  }
-
-  countCompleted();
-}
-
-// Random quotes from hell
-const quoteBox = document.querySelector("blockquote");
-const cite = document.querySelector("cite");
-
-function getQuotes() {
-  const xhr = new XMLHttpRequest();
-
-  xhr.open("GET", "js/quotes.json", true);
-
-  xhr.onload = function() {
-    if (this.status === 200) {
-      const quotes = JSON.parse(this.responseText);
-      randomQuote(quotes);
-    }
-  };
-  xhr.send();
-}
-
-function randomQuote(quotes) {
-  const quotesAmount = quotes.length;
-  const randomNumber = Math.floor(Math.random() * quotesAmount);
-  quoteBox.textContent = quotes[randomNumber].quote;
-  cite.textContent = quotes[randomNumber].author;
 }
