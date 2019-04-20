@@ -76,7 +76,7 @@ function showCompletedPage() {
   }
 }
 
-// Random quotes from hell
+// Show random quotes from hell
 const quoteBox = document.querySelector("blockquote");
 const cite = document.querySelector("cite");
 

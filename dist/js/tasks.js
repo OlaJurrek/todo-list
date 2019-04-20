@@ -1,62 +1,14 @@
-//Define main UI variables
+// Define main UI variables
 const taskInput = document.querySelector("#new-task");
 const addNewForm = document.querySelector(".input-field form");
 const taskList = document.querySelector(".todo-list");
 const completedTaskList = document.querySelector(".completed-list");
 
-// Show new tasks stored in LS
-document.addEventListener("DOMContentLoaded", showTasks);
+/* -------------------------------------------
+------------  Displaying Tasks ---------------
+---------------------------------------------*/
 
-function showTasks() {
-  // Check if there are any tasks in LS
-  let tasks;
-  if (localStorage.getItem("tasks") === null) {
-    tasks = [];
-  } else {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
-  }
-  // Display all tasks in UI
-  for (const task of tasks) {
-    createTaskInUI(task, taskList, "new");
-  }
-  countTasks();
-}
-
-// Show completed task on completed task page
-document.addEventListener("DOMContentLoaded", showCompletedTasks);
-
-function showCompletedTasks() {
-  // check if there is sth in LS
-  let completedTasks;
-  if (localStorage.getItem("completedTasks") === null) {
-    completedTasks = [];
-  } else {
-    completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
-  }
-
-  for (const task of completedTasks) {
-    createTaskInUI(task, completedTaskList);
-  }
-  countCompleted();
-}
-
-// Show number of tasks to do
-const taskCounter = document.querySelector(".todo-counter");
-
-function countTasks() {
-  taskCounter.innerHTML = taskList.children.length;
-}
-
-// Show number of completed tasks
-const completedCounter = document.querySelector(".done-counter");
-
-function countCompleted() {
-  completedCounter.innerHTML = completedTaskList.children.length;
-}
-
-// Add new task
-addNewForm.addEventListener("submit", addNewTask);
-
+// Create a task element in UI
 function createTaskInUI(value, list, status = "completed") {
   // Create new li element
   const task = document.createElement("li");
@@ -78,6 +30,35 @@ function createTaskInUI(value, list, status = "completed") {
   list.appendChild(task);
 }
 
+// Show new tasks stored in LS
+document.addEventListener("DOMContentLoaded", showNewTasks);
+
+function showNewTasks() {
+  // Check if there are any new tasks in LS
+  const tasks = checkLocalStorage("tasks");
+  // Display new tasks in UI
+  for (const task of tasks) {
+    createTaskInUI(task, taskList, "new");
+  }
+  countTasks();
+}
+
+// Show completed tasks stored in LS
+document.addEventListener("DOMContentLoaded", showCompletedTasks);
+
+function showCompletedTasks() {
+  // Check if there are any completed tasks in LS
+  const completedTasks = checkLocalStorage("completedTasks");
+  // Display completed tasks in UI
+  for (const task of completedTasks) {
+    createTaskInUI(task, completedTaskList);
+  }
+  countCompleted();
+}
+
+// Add new task
+addNewForm.addEventListener("submit", addNewTask);
+
 function addNewTask(e) {
   if (taskInput.value === "") {
     showAlert();
@@ -87,7 +68,7 @@ function addNewTask(e) {
   // Add new task to UI
   createTaskInUI(taskInput.value, taskList, "new");
   // Add to LS
-  addToLocalStorage(taskInput.value);
+  addToLocalStorage(taskInput.value, "tasks");
   // Change counter
   countTasks();
   // Clear input field
@@ -108,70 +89,9 @@ function showAlert() {
   }, 1500);
 }
 
-// Add new task to LocalStorage
-function addToLocalStorage(task) {
-  let tasks;
-  if (localStorage.getItem("tasks") === null) {
-    tasks = [];
-  } else {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
-  }
-  tasks.push(task);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
-// Task filters
-document.querySelector("#new-filter").addEventListener("keyup", filterTasks);
-document
-  .querySelector("#completed-filter")
-  .addEventListener("keyup", filterTasks);
-
-function filterTasks(e) {
-  const filteredList = e.target.parentElement.parentElement.nextElementSibling;
-  for (const task of filteredList.children) {
-    if (task.textContent.indexOf(e.target.value) !== -1) {
-      task.style.display = "block";
-    } else {
-      task.style.display = "none";
-    }
-  }
-}
-
-// Delete all new tasks
-const deleteAllNewBtn = document.querySelector("main .all-delete-btn");
-
-deleteAllNewBtn.addEventListener("click", deleteAllNew);
-
-function deleteAllNew() {
-  while (taskList.firstChild) {
-    taskList.lastChild.remove();
-  }
-  localStorage.removeItem("tasks");
-  countTasks();
-}
-
-//Delete one new task
-taskList.addEventListener("click", deleteOne);
-
-function deleteOne(e) {
-  if (e.target.parentElement.className == "delete-task") {
-    let deleteMe = e.target.parentElement.parentElement;
-    removeTaskFromLocalStorage(deleteMe.textContent, "tasks");
-    deleteMe.remove();
-    countTasks();
-  }
-}
-
-// Remove one task from LS
-function removeTaskFromLocalStorage(taskToRemove, LSlist) {
-  const tasks = JSON.parse(localStorage.getItem(LSlist));
-  tasks.forEach(function(task) {
-    if (task == taskToRemove) {
-      tasks.splice(tasks.indexOf(task), 1);
-    }
-  });
-  localStorage.setItem(LSlist, JSON.stringify(tasks));
-}
+/* -------------------------------------------
+------------  Completing Tasks ---------------
+---------------------------------------------*/
 
 // Mark all tasks as complete
 const markAllBtn = document.querySelector(".all-complete-btn");
@@ -182,18 +102,13 @@ function markAllComplete() {
   // Check if there are any new tasks and stop executing if not
   if (taskList.children.length === 0) return;
   // Check if there is completed task list in LS
-  let completedTasks;
-  if (localStorage.getItem("completedTasks") === null) {
-    completedTasks = [];
-  } else {
-    completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
-  }
-  // Get the whole new task list from LS and add to completed task list
+  let completedTasks = checkLocalStorage("completedTasks");
+  // Get the whole new task list from LS and add to completed task list in LS
   const justCompletedTasks = JSON.parse(localStorage.getItem("tasks"));
   completedTasks = completedTasks.concat(justCompletedTasks);
   // Set new completed task list to LS
   localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
-  // Clear new task list in LS
+  // Clear new task list in UI & LS
   deleteAllNew();
   // Add all new tasks to completed task list in UI
   for (const task of justCompletedTasks) {
@@ -208,20 +123,46 @@ taskList.addEventListener("click", markOneComplete);
 function markOneComplete(e) {
   if (e.target.parentElement.className == "mark-complete") {
     let completedTask = e.target.parentElement.parentElement;
-    removeTaskFromLocalStorage(completedTask.textContent, "tasks");
-    let completedTasks;
-    if (localStorage.getItem("completedTasks") === null) {
-      completedTasks = [];
-    } else {
-      completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
-    }
-
-    completedTasks.push(completedTask.textContent);
-    localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
+    // Remove this task from list of new tasks in LS
+    removeFromLocalStorage(completedTask.textContent, "tasks");
+    // Add it to completed task list in LS
+    addToLocalStorage(completedTask.textContent, "completedTasks");
+    // Remove it from new task list in UI
     completedTask.remove();
+    // Add it to completed task list in UI
     createTaskInUI(completedTask.textContent, completedTaskList);
+    // Update counters
     countTasks();
     countCompleted();
+  }
+}
+
+/* ----------------------------------------
+------------  Deleting Tasks ---------------
+-----------------------------------------*/
+
+// Delete all new tasks
+const deleteAllNewBtn = document.querySelector("main .all-delete-btn");
+
+deleteAllNewBtn.addEventListener("click", deleteAllNew);
+
+function deleteAllNew() {
+  while (taskList.firstChild) {
+    taskList.lastChild.remove();
+  }
+  localStorage.removeItem("tasks");
+  countTasks();
+}
+
+// Delete one new task
+taskList.addEventListener("click", deleteOneNew);
+
+function deleteOneNew(e) {
+  if (e.target.parentElement.className == "delete-task") {
+    let deleteMe = e.target.parentElement.parentElement;
+    removeFromLocalStorage(deleteMe.textContent, "tasks");
+    deleteMe.remove();
+    countTasks();
   }
 }
 
@@ -246,8 +187,78 @@ completedTaskList.addEventListener("click", deleteOneCompleted);
 function deleteOneCompleted(e) {
   if (e.target.parentElement.className == "delete-task") {
     let deleteMe = e.target.parentElement.parentElement;
-    removeTaskFromLocalStorage(deleteMe.textContent, "completedTasks");
+    removeFromLocalStorage(deleteMe.textContent, "completedTasks");
     deleteMe.remove();
     countCompleted();
   }
+}
+
+/* --------------------------------------------
+-----------  Filtering Tasks  ----------------
+-------------------------------------------- */
+
+document.querySelector("#new-filter").addEventListener("keyup", filterTasks);
+document
+  .querySelector("#completed-filter")
+  .addEventListener("keyup", filterTasks);
+
+function filterTasks(e) {
+  const filteredList = e.target.parentElement.parentElement.nextElementSibling;
+  for (const task of filteredList.children) {
+    if (task.textContent.indexOf(e.target.value) !== -1) {
+      task.style.display = "block";
+    } else {
+      task.style.display = "none";
+    }
+  }
+}
+
+/* --------------------------------------------
+-----------  Counting Tasks  ----------------
+-------------------------------------------- */
+
+// Show number of tasks to do
+const taskCounter = document.querySelector(".todo-counter");
+
+function countTasks() {
+  taskCounter.innerHTML = taskList.children.length;
+}
+
+// Show number of completed tasks
+const completedCounter = document.querySelector(".done-counter");
+
+function countCompleted() {
+  completedCounter.innerHTML = completedTaskList.children.length;
+}
+
+/* --------------------------------------------
+-----------  Managing Local Storage  ----------
+-------------------------------------------- */
+
+// Check if there is the list you need in Local Storage
+function checkLocalStorage(LSlist) {
+  if (localStorage.getItem(LSlist.toString()) === null) {
+    LSlist = [];
+  } else {
+    LSlist = JSON.parse(localStorage.getItem(LSlist.toString()));
+  }
+  return LSlist;
+}
+
+// Add new item to the specific list in LocalStorage
+function addToLocalStorage(newItem, LSlist) {
+  tasks = checkLocalStorage(LSlist.toString());
+  tasks.push(newItem);
+  localStorage.setItem(LSlist, JSON.stringify(tasks));
+}
+
+// Remove one item from the speficic list in Local Storage
+function removeFromLocalStorage(itemToRemove, LSlist) {
+  const tasks = JSON.parse(localStorage.getItem(LSlist));
+  tasks.forEach(function(task) {
+    if (task == itemToRemove) {
+      tasks.splice(tasks.indexOf(task), 1);
+    }
+  });
+  localStorage.setItem(LSlist, JSON.stringify(tasks));
 }
